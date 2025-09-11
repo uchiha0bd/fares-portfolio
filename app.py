@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify, render_template
 import smtplib
 from email.mime.text import MIMEText
 import os
-
+from dotenv import load_dotenv
+load_dotenv() # This line loads the variables from .env
 # Determine the base directory of the application (where app.py is located)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 

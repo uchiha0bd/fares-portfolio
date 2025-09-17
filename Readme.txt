@@ -1,6 +1,4 @@
-Thanks for downloading this template!
+Hello there, this is my website. I would be glad if you could visit it.
+https://fareshamid.com
 
-Template Name: MyResume
-Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+I use InterServer as my server provider and Cloudflare to provide TLS and a website license.

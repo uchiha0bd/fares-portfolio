@@ -1,286 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - Fares Hamid</title>
-  <meta content="Detailed information about Fares Hamid's projects." name="description">
-  <meta content="portfolio, python, chatbot, developer, fares hamid" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio & Certificate Details - Fares Hamid</title>
 
-  <!-- Favicons -->
-  <link href="static/img/favicon.png" rel="icon">
-  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Vendor CSS Files -->
-  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="static/vendor/aos/aos.css" rel="stylesheet">
-  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="static/css/main.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0563bb',
+            lightbg: '#f9f9f9',
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body class="portfolio-details-page">
+<body class="bg-lightbg text-gray-800 font-sans antialiased selection:bg-blue-500 selection:text-white">
 
-  <header id="header" class="header d-flex flex-column justify-content-center">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
-        <li><a href="index.html#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
-        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-        <li><a href="index.html#portfolio" class="active"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-      </ul>
-    </nav>
+  <!-- Floating WhatsApp Button (Fixed Bottom Right) -->
+  <a href="https://wa.me/601127317596" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+    <i class="bi bi-whatsapp text-3xl"></i>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 opacity-0 group-hover:opacity-100">
+      Chat on WhatsApp
+    </span>
+  </a>
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-gray-900 flex items-center gap-2">
+        <i class="bi bi-code-slash text-primary"></i> Fares Hamid
+      </a>
+      <a href="/" class="inline-flex items-center gap-2 bg-gray-100 hover:bg-primary hover:text-white text-gray-700 text-sm font-semibold px-4 py-2 rounded-full transition">
+        <i class="bi bi-arrow-left"></i> Back to Home
+      </a>
+    </div>
   </header>
 
-  <main class="main">
+  <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">Portfolio Details</li>
-          </ol>
-        </nav>
-        <h1>Portfolio Details</h1>
-      </div>
-    </div><!-- End Page Title -->
+    <!-- Header Title -->
+    <div class="text-center space-y-3">
+      <h1 class="text-4xl font-extrabold text-gray-900">Portfolio & Certificate Details</h1>
+      <p class="text-gray-600 max-w-xl mx-auto">Full documents, certificates, and detailed overviews of my projects.</p>
+      <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+    </div>
 
-    <!-- =======================================================
-         START OF PROJECT 1: CHATUTM
-    ======================================================== -->
-    <section id="portfolio-details-chatutm" class="portfolio-details section">
-      <div class="container" data-aos="fade-up">
-        
-        <div class="row justify-content-between gy-4 mt-4">
-
-          <div class="col-lg-8" data-aos="fade-up">
-            <h2 class="portfolio-title">ChatUTM - Telegram Community Chatbot</h2>
-            <div class="portfolio-details-slider swiper init-swiper">
-              <script type="application/json" class="swiper-config">
-                { "loop": true, "speed": 600, "autoplay": { "delay": 5000 }, "slidesPerView": "auto", "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true } }
-              </script>
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide"><img src="static/img/masonry-portfolio/masonry-portfolio-6.jpg" alt="ChatUTM Screenshot 1"></div>
-              </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-pagination"></div>
-            </div>
-            <div class="portfolio-description mt-4">
-              <h3>Project Overview</h3>
-              <p>
-                This is a Telegram API integrated with a chat agent, creating a helpful chatbot for the UTM university Arab community. The chatbot is fed knowledge from various university resources to answer common questions and provide assistance.
-              </p>
-              <p>
-                The primary goal was to create a centralized information hub, reducing the need for students to search through multiple documents or ask repetitive questions in group chats. The bot was trained using Natural Language Processing (NLP) techniques to understand user intent and provide accurate, context-aware answers.
-              </p>
-            </div>
+    <!-- ITEM 1: Udemy PCEP Python Certificate -->
+    <section id="item-1" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Python Certification</span>
+          <h2 class="text-2xl font-bold text-gray-900">PCEP – Certified Entry-Level Python Programmer</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-1.webp" alt="PCEP Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
           </div>
-
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong> AI Chatbot & API Integration</li>
-                <li><strong>Client</strong> ISS-YEMEN Volunteering Project</li>
-                <li><strong>Project date</strong> March, 2025</li>
-                <li><strong>Technologies</strong> Python, Flask, Telegram API, NLP</li>
-              </ul>
-            </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Certificate awarded for attending and completing an intensive course covering core Python programming concepts. Key topics studied include foundational syntax, data structures, loops, object-oriented programming basics, and algorithm design.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
+          <p><strong class="text-gray-900">Category:</strong> Course Certificate</p>
+          <p><strong class="text-gray-900">Platform:</strong> Udemy</p>
+          <p><strong class="text-gray-900">Topic:</strong> Python Fundamentals (PCEP)</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python 3</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Programming Basics</span>
           </div>
         </div>
       </div>
     </section>
-    <!-- END OF PROJECT 1 -->
 
-    <!-- =======================================================
-         START OF PROJECT 2: THE COFFEE CHRONICLES
-    ======================================================== -->
-    <section id="portfolio-details-coffee" class="portfolio-details section">
-        <div class="container" data-aos="fade-up">
-          <div class="row justify-content-between gy-4 mt-4">
-            <div class="col-lg-8" data-aos="fade-up">
-              <h2 class="portfolio-title">The Coffee Chronicles</h2>
-              <div class="portfolio-details-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  { "loop": true, "speed": 600, "autoplay": { "delay": 5000 }, "slidesPerView": "auto", "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true } }
-                </script>
-                <div class="swiper-wrapper align-items-center">
-                  <div class="swiper-slide"><img src="static/img/masonry-portfolio/masonry-portfolio-7.jpg" alt="Coffee Project Screenshot 1"></div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <div class="portfolio-description mt-4">
-                <h3>Project Overview</h3>
-                <p>
-                  This is an informative website project designed to share knowledge about coffee, its origins, different brewing methods, and interesting facts. The site also includes an integrated chat agent that can answer user questions about coffee in a conversational way.
-                </p>
-              </div>
-            </div>
-  
-            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="portfolio-info">
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong> Web Development & AI Chatbot</li>
-                  <li><strong>Client</strong> Personal Project</li>
-                  <li><strong>Project date</strong> April, 2024</li>
-                  <li><strong>Project URL</strong> <a href="#">(Link not available)</a></li>
-                  <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
-                </ul>
-              </div>
-            </div>
+    <!-- ITEM 2: Excel Certificate -->
+    <section id="item-2" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Data Analytics</span>
+          <h2 class="text-2xl font-bold text-gray-900">Excel & Macros Training Certificate</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-2.webp" alt="Excel Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Attended a week-long intensive course covering Microsoft Excel essentials, advanced formulas, macros, data organization, and spreadsheet management workflow techniques.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
+          <p><strong class="text-gray-900">Category:</strong> Workshop Certificate</p>
+          <p><strong class="text-gray-900">Focus:</strong> Excel & Productivity</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">MS Excel</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Macros</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Data Analysis</span>
           </div>
         </div>
-      </section>
-      <!-- END OF PROJECT 2 -->
+      </div>
+    </section>
 
-    <!-- =======================================================
-         START OF PROJECT 3: REACT PERFORMANCE SOLUTIONS
-    ======================================================== -->
-    <section id="portfolio-details-react" class="portfolio-details section">
-        <div class="container" data-aos="fade-up">
-          <div class="row justify-content-between gy-4 mt-4">
-            <div class="col-lg-8" data-aos="fade-up">
-              <h2 class="portfolio-title">React Performance Solutions</h2>
-              <div class="portfolio-details-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  { "loop": true, "speed": 600, "autoplay": { "delay": 5000 }, "slidesPerView": "auto", "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true } }
-                </script>
-                <div class="swiper-wrapper align-items-center">
-                  <div class="swiper-slide"><img src="static/img/masonry-portfolio/masonry-portfolio-8.jpg" alt="React Project Screenshot 1"></div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <div class="portfolio-description mt-4">
-                <h3>Project Overview</h3>
-                <p>
-                  This project was a deep-dive case study into optimizing a slow and inefficient React application. The primary goal was to identify performance bottlenecks and implement modern front-end techniques to significantly increase speed and responsiveness.
-                </p>
-                <p>
-                  Using tools like Lighthouse and the React DevTools Profiler, I analyzed component render times and network requests. Key optimizations included implementing code-splitting to reduce initial bundle size, lazy-loading components that were not immediately visible, and using memoization (React.memo) to prevent unnecessary re-renders of components. The result was a dramatic improvement in the application's performance metrics.
-                </p>
-              </div>
-            </div>
-  
-            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="portfolio-info">
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong> Front-End Development, Performance</li>
-                  <li><strong>Client</strong> Personal Case Study</li>
-                  <li><strong>Project date</strong> August, 2024</li>
-                  <li><strong>Technologies</strong> React, Lighthouse, Webpack</li>
-                </ul>
-              </div>
-            </div>
+    <!-- ITEM 3: Cyber Security Workshop -->
+    <section id="item-3" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Security</span>
+          <h2 class="text-2xl font-bold text-gray-900">Cyber Security Workshop Certificate</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-3.webp" alt="Cyber Security Workshop" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Certificate awarded for attending an interactive workshop on cybersecurity fundamentals, threat awareness, system safety, network vulnerabilities, and defensive concepts.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
+          <p><strong class="text-gray-900">Category:</strong> Security Workshop</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Cyber Security</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Network Safety</span>
           </div>
         </div>
-      </section>
-      <!-- END OF PROJECT 3 -->
+      </div>
+    </section>
 
-    <!-- =======================================================
-         START OF PROJECT 4: PDF PARSER
-    ======================================================== -->
-    <section id="portfolio-details-pdf" class="portfolio-details section">
-        <div class="container" data-aos="fade-up">
-          <div class="row justify-content-between gy-4 mt-4">
-            <div class="col-lg-8" data-aos="fade-up">
-              <h2 class="portfolio-title">PDF Parser and Text Extractor</h2>
-              <div class="portfolio-details-slider swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                  { "loop": true, "speed": 600, "autoplay": { "delay": 5000 }, "slidesPerView": "auto", "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true } }
-                </script>
-                <div class="swiper-wrapper align-items-center">
-                  <div class="swiper-slide"><img src="static/img/masonry-portfolio/masonry-portfolio-9.jpg" alt="PDF Parser Screenshot 1"></div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <div class="portfolio-description mt-4">
-                <h3>Project Overview</h3>
-                <p>
-                  This project is a Python-based utility script designed to read PDF documents and extract their text content into a clean, usable format (.txt). The motivation was to create a simple tool for automating the process of pulling data from PDF files for further analysis, processing, or even as input for training AI models.
-                </p>
-                <p>
-                  The script handles opening and iterating through the pages of a PDF, parsing the content, and writing it to a new text file. It serves as a foundational component for more complex data extraction and document processing workflows.
-                </p>
-              </div>
-            </div>
-  
-            <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="portfolio-info">
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong> Python Scripting, Data Extraction</li>
-                  <li><strong>Client</strong> Personal Project</li>
-                  <li><strong>Project date</strong> June, 2024</li>
-                  <li><strong>Technologies</strong> Python, PyPDF2</li>
-                </ul>
-              </div>
-            </div>
+    <!-- ITEM 4: IELTS Preparation Course -->
+    <section id="item-4" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Language Competency</span>
+          <h2 class="text-2xl font-bold text-gray-900">IELTS Preparation Certificate - EMS Institute</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-4.webp" alt="IELTS Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Completed an intensive English preparation course at the EMS Language Centre focused on academic reading, technical writing, listening comprehension, and professional speaking skills.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
+          <p><strong class="text-gray-900">Institution:</strong> EMS Language Centre</p>
+          <p><strong class="text-gray-900">Focus:</strong> IELTS & Academic English</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEM 5: ISS-YEMEN Volunteering Certificate -->
+    <section id="item-5" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Volunteering & Leadership</span>
+          <h2 class="text-2xl font-bold text-gray-900">ISS-YEMEN YSAG Head of Computing Faculty</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-5.webp" alt="Volunteering Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Certificate recognizing leadership service as the Head of the Computing Faculty for Yemeni students at Universiti Teknologi Malaysia (UTM) under ISS-YEMEN YSAG. Led tech initiatives, community workshops, and academic guidance.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
+          <p><strong class="text-gray-900">Organization:</strong> ISS-YEMEN YSAG (UTM)</p>
+          <p><strong class="text-gray-900">Role:</strong> Head of Computing Faculty</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEM 6: ChatUTM -->
+    <section id="item-6" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider">AI Chatbot</span>
+          <h2 class="text-2xl font-bold text-gray-900">ChatUTM - Telegram Community Chatbot</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-6.webp" alt="ChatUTM" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            A Telegram API integrated chatbot trained on university resources to serve the UTM Arab student community. It utilizes PyTorch and Gemini NLP models to answer common student questions instantly, streamlining community communication.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+          <p><strong class="text-gray-900">Client:</strong> ISS-YEMEN Volunteering Project</p>
+          <p><strong class="text-gray-900">Date:</strong> March 2025</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Flask</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Telegram API</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">PyTorch NLP</span>
           </div>
         </div>
-      </section>
-      <!-- END OF PROJECT 4 -->
+      </div>
+    </section>
+
+    <!-- ITEM 7: The Coffee Chronicles -->
+    <section id="item-7" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider">Web App & AI</span>
+          <h2 class="text-2xl font-bold text-gray-900">The Coffee Chronicles</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-7.webp" alt="The Coffee Chronicles" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            An informative web application that shares knowledge about coffee origins, bean processing, and brewing methods. Features an integrated conversational AI agent that answers coffee queries in real time.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+          <p><strong class="text-gray-900">Category:</strong> Personal Project</p>
+          <p><strong class="text-gray-900">Date:</strong> April 2024</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">HTML5</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">JavaScript</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Gemini API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEM 8: React Performance Solutions -->
+    <section id="item-8" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-bold rounded-full uppercase tracking-wider">React Engineering</span>
+          <h2 class="text-2xl font-bold text-gray-900">React Performance Solutions</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-8.webp" alt="React Performance" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            A case study project focused on solving performance bottlenecks in React applications. Utilized code-splitting, lazy-loading, memoization (`React.memo`), and Webpack optimization to increase page rendering speed and lower initial bundle size.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+          <p><strong class="text-gray-900">Category:</strong> Front-End Performance</p>
+          <p><strong class="text-gray-900">Date:</strong> August 2024</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">React</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Lighthouse</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Webpack</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEM 9: PDF Parser -->
+    <section id="item-9" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-bold rounded-full uppercase tracking-wider">Python Scripting</span>
+          <h2 class="text-2xl font-bold text-gray-900">PDF Parser & Text Extractor</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-9.webp" alt="PDF Parser" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            A Python utility tool built to parse complex PDF documents and extract raw text into structured `.txt` files. Created to automate document reading workflows and prepare training data for AI models.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+          <p><strong class="text-gray-900">Category:</strong> Data Parsing</p>
+          <p><strong class="text-gray-900">Date:</strong> June 2024</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">PyPDF2</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEM 10: Taj Al Modon -->
+    <section id="item-10" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4">
+          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider">Commercial Site</span>
+          <h2 class="text-2xl font-bold text-gray-900">Taj Al Modon Trading Company</h2>
+          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-10.webp" alt="Taj Al Modon" class="max-h-[450px] w-auto object-contain rounded-lg">
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Official commercial website for Taj Al Modon Trading Company in Saudi Arabia, specializing in furniture selling. Designed to present their catalog and business contacts online.
+          </p>
+        </div>
+        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+          <p><strong class="text-gray-900">Client:</strong> Taj Al Modon Company (KSA)</p>
+          <p><strong class="text-gray-900">Website:</strong> <a href="https://www.tajalmodon.com" target="_blank" class="text-primary hover:underline">www.tajalmodon.com</a></p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Web Development</span>
+            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">SEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <h3 class="sitename">Fares Hamid</h3>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://x.com/faresexpress2" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.linkedin.com/in/fares-hamid-858118269/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/uchiha0bd" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Fares Hamid</strong> <span>All Rights Reserved</span>
-        </div>
-      </div>
-    </div>
+  <footer class="py-8 bg-white border-t border-gray-200 text-center text-gray-500 text-sm">
+    <p>© Fares Hamid. All Rights Reserved.</p>
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/vendor/aos/aos.js"></script>
-  <script src="static/vendor/typed.js/typed.umd.js"></script>
-  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="static/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="static/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="static/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="static/js/main.js"></script>
-
 </body>
-
 </html>

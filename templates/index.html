@@ -1,824 +1,662 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>MyResume</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fares Hamid - Software Engineer & Developer</title>
 
-  <!-- Favicons -->
-  <link href="static/img/favicon.webp" rel="icon">
-  <link href="static/img/apple-touch-icon.webp" rel="apple-touch-icon">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Vendor CSS Files -->
-  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="static/vendor/aos/aos.css" rel="stylesheet">
-  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="static/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MyResume
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0563bb',
+            dark: '#272829',
+            lightbg: '#f9f9f9',
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body class="index-page">
+<body class="bg-white text-gray-800 font-sans antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
-  <header id="header" class="header d-flex flex-column justify-content-center">
+  <!-- Mobile Top Right Menu Toggle Button (Mobile Only) -->
+  <button id="menu-toggle" aria-label="Toggle navigation" class="xl:hidden fixed top-4 right-4 z-50 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition">
+    <i class="bi bi-list text-xl"></i>
+  </button>
 
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+  <!-- Mobile Top Horizontal Menu Bar (Drops down when pressing the 3-line button on mobile) -->
+  <div id="mobile-menu" class="xl:hidden fixed top-16 left-3 right-3 z-50 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-2xl shadow-2xl p-2 transition-all duration-300 transform -translate-y-6 opacity-0 pointer-events-none flex items-center justify-between gap-1 overflow-x-auto">
+    
+    <a href="#hero" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-house text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Home</span>
+    </a>
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-      </ul>
+    <a href="#about" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-person text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">About</span>
+    </a>
+
+    <a href="#skills" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-bar-chart-line text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Skills</span>
+    </a>
+
+    <a href="#resume" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-file-earmark-text text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Resume</span>
+    </a>
+
+    <a href="#portfolio" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-images text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Portfolio</span>
+    </a>
+
+    <a href="#services" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-hdd-stack text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Services</span>
+    </a>
+
+    <a href="#contact" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-envelope text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Contact</span>
+    </a>
+
+  </div>
+
+  <!-- Floating WhatsApp Button (Fixed Bottom Right) -->
+  <a href="https://wa.me/601127317596" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
+    <i class="bi bi-whatsapp text-3xl"></i>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 opacity-0 group-hover:opacity-100">
+      Chat on WhatsApp
+    </span>
+  </a>
+
+  <!-- Desktop-Only Floating Icon Navigation (Hidden on Mobile) -->
+  <header id="sidebar" class="hidden xl:flex fixed top-0 bottom-0 left-4 z-40 bg-transparent flex-col justify-center items-center pointer-events-none">
+    <nav class="space-y-4 pointer-events-auto flex flex-col items-center">
+      
+      <!-- Home Icon -->
+      <a href="#hero" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-house text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Home
+        </span>
+      </a>
+
+      <!-- About Icon -->
+      <a href="#about" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-person text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          About
+        </span>
+      </a>
+
+      <!-- Skills Icon -->
+      <a href="#skills" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-bar-chart-line text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Skills
+        </span>
+      </a>
+
+      <!-- Resume Icon -->
+      <a href="#resume" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-file-earmark-text text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Resume
+        </span>
+      </a>
+
+      <!-- Portfolio Icon -->
+      <a href="#portfolio" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-images text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Portfolio
+        </span>
+      </a>
+
+      <!-- Services Icon -->
+      <a href="#services" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-hdd-stack text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Services
+        </span>
+      </a>
+
+      <!-- Contact Icon -->
+      <a href="#contact" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-envelope text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
+          Contact
+        </span>
+      </a>
+
     </nav>
-
   </header>
 
-  <main class="main">
+  <!-- Main Content Wrapper (100% width on Mobile) -->
+  <main class="w-full overflow-x-hidden">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section light-background">
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen relative flex items-center justify-center px-4 sm:px-8 py-20 overflow-hidden">
+      <!-- Background Image -->
+      <img src="static/img/hero-bg.webp" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover z-0">
+      <!-- Light Overlay for text readability -->
+      <div class="absolute inset-0 bg-white/65 backdrop-blur-[1px] z-10"></div>
 
-      <img src="static/img/hero-bg.webp" alt="">
+      <div class="relative z-20 max-w-5xl text-center space-y-6">
+        <h1 class="text-5xl sm:text-7xl font-extrabold text-gray-900 tracking-tight">Fares Hamid</h1>
+        
+        <!-- Typewriter text -->
+        <p class="text-2xl sm:text-3xl text-gray-700 font-medium">
+          I'm <span id="typed-text" class="text-primary font-semibold border-b-2 border-primary"></span><span class="animate-pulse text-primary font-bold">|</span>
+        </p>
 
-      <div class="container" data-aos="zoom-out">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <h2>Fares Hamid</h2>
-            <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-            <div class="social-links">
-              <!--<a href="https://x.com/faresexpress2" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter-x"></i></a>-->
-              <a href="https://www.linkedin.com/in/fares-hamid-858118269/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-              <a href="https://github.com/uchiha0bd"><i class="bi bi-github" target="_blank" rel="noopener noreferrer"></i></a>
-            </div>
-          </div>
+        <!-- Social Links -->
+        <div class="flex justify-center gap-4 pt-4">
+          <a href="https://www.linkedin.com/in/fares-hamid-858118269/" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-white/90 shadow-md border border-gray-200 text-gray-700 hover:text-primary hover:border-primary flex items-center justify-center text-xl transition transform hover:-translate-y-1">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://github.com/uchiha0bd" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-white/90 shadow-md border border-gray-200 text-gray-700 hover:text-primary hover:border-primary flex items-center justify-center text-xl transition transform hover:-translate-y-1">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="mailto:faresexpress2@gmail.com" class="w-12 h-12 rounded-full bg-white/90 shadow-md border border-gray-200 text-gray-700 hover:text-primary hover:border-primary flex items-center justify-center text-xl transition transform hover:-translate-y-1">
+            <i class="bi bi-envelope"></i>
+          </a>
         </div>
       </div>
+    </section>
 
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>I have some knowledge about web development API integration using AI and other fascinating tools. I am happy to connect with you. You can reach me via email or phone.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="static/img/profile-img.webp" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Fares Hamid Abdo Mohammed.</h2> <br></br>
-            <!-- <p class="fst-italic py-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p> -->
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>6 November 2002</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://fareshamid.com" target="_blank">fareshamid.com</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone & whatsapp:</strong> <span><a href="https://wa.me/601127317596" target="_blank">+601127317596</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Johor Bahru, Malaysia</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Software Engineering</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:faresexpress2@gmail.com">faresexpress2@gmail.com</a></span></li>
-                  <!--<li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span><a href="https://www.upwork.com/freelancers/~01c1a598c4d72b67e2" target="_blank">Upwork</a></span></li> -->
-                </ul>
-              </div>
-            </div>
-            <!-- <p class="py-3">
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
-            </p> -->
-          </div>
-        </div>
-
+    <!-- ABOUT SECTION -->
+    <section id="about" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 max-w-7xl mx-auto flex flex-col justify-center">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">About Me</h2>
+        <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+        <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-base">
+          I have knowledge in web development and API integration using AI tools and modern frameworks. Happy to connect with you via email or phone.
+        </p>
       </div>
 
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <!-- <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-emoji-smile"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
-            </div>
-          </div>End Stats Item -->
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                <i class="bi bi-journal-richtext"></i>
-                <div class="stats-item">
-                  <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
-                  <p>Projects</p>
-                </div>
-              </div><!-- End Stats Item -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-headset"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div>End Stats Item -->
-
-          <!-- <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-people"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
-            </div>
-          </div>End Stats Item -->
-
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- Profile Image -->
+        <div class="lg:col-span-4 flex justify-center">
+          <img src="static/img/profile-img.webp" alt="Fares Hamid Profile" class="rounded-2xl shadow-xl w-80 lg:w-full max-w-xs object-cover border-4 border-white">
         </div>
 
-      </div>
-
-    </section><!-- /Stats Section -->
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>These are some of the skills I have gained during my learning.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Web development</span> <i class="val">81%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>chatbot development</span> <i class="val">43%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Python</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>API Integration</span> <i class="val">17%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>AI tools</span> <i class="val">91%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Skills Section -->
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>Fares Hamid</h4>
-              <p><em>Innovative and deadline-driven software developer with 2+ years of experience building, developing and integrating APIs, with self-taught experience in marketing material from initial concepts.</em></p>
-              <ul>
-                <li>Taman University, Johor Bahru, Johor</li>
-                <li>+601127317596</li>
-                <li>Faresexpress2@gmail.com</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Software Engineering &amp; self-taught chatbot, LLMs, Python, APIs, Web integration API and more</h4>
-              <h5>2022 - 2025 (ongoing)</h5>
-              <p><em>University Technology Malaysia, UTM, Johor</em></p>
-              <p></p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Python &amp; NLP Chatbot with LLMs</h4>
-              <h5>2022 - 2025 (ongoing)</h5>
-              <p><em>Self-taught. I have certificates from Udemy (PCEP), Excel, and have volunteered on some friends' projects.</em></p>
-              <p>I am using Gemini 2.0, Flask, and Pro 2.5 for the development process. I am learning software from university but have self-taught most of the futuristic tools and tricks to make my life easier and provide better services.</p>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Training Data for Chatbot</h4>
-              <h5>2025 March</h5>
-              <p><em>University Technology Malaysia & ISS-YEMEN Volunteering project</em></p>
-              <ul>
-                <li>Building a complete chat agent that collects data from UTM resources and groups then manages to understand and learn.</li>
-                <li>Teaching the chatbot how to reply using NLP with different libraries like PyTorch.</li>
-                <li>Data collection was one of the main jobs I had to take at the beginning of the project.</li>
-                <li>Volunteering project, so no money was taken since it was my first project and my start phase.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Accountant Background</h4>
-              <h5>2019 - 2021</h5>
-              <p><em>al-galith, Abha, Asir, Saudi Arabia</em></p>
-              <ul>
-                <li>Worked for a year and a half as an Accountant in a medium-sized company, which helped me learn a lot about tax and job priorities.</li>
-                <!-- <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li> -->
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>These are some of my Certificates and Projects I have made during my studying period.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <!-- <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li> -->
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-1.webp" class="img-fluid" alt="Udemy Certificate for attending PCEP course">
-              <div class="portfolio-info">
-                <h4>Certificate</h4>
-                <p>This is a python certificates which telling i joins a course for about a month learning python basics.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-1.webp" title="All" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-2.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Certificate</h4>
-                <p>This following is for attending a week learning basics of Excel, micros, how to manage and work with it.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-2.webp" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-3.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Certificate</h4>
-                <p>For attending a workshop about Cyber Security</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-3.webp" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-4.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Certificate</h4>
-                <p>joining IELTS preparation course, in EMS inistitute.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-4.webp" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-5.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Certificate</h4>
-                <p>This is for Volunteering in ISS-YEMEN YSAG as the head of Computing Faculty of Yemeni students.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-5.webp" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-6.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>ChatUTM</h4>
-                <p>This is telegram API integrated with chatagent so it is a telegram chatbot that fed all knowledge it need to answer questions about UTM university arab community needs.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-6.webp" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-7.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>The Coffee Chronicles</h4>
-                <p>This is a project informative website to show knowledge about coffee and its origins also this site include chat agent that can help answer questions about coffee.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-7.webp" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-8.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>React performance solutions</h4>
-                <p>This is a project i have worked on solving a performance issues i increased the speed to maximum using different tools in react.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-8.webp" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>End Portfolio Item
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-9.webp" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>PDF parser</h4>
-                <p>This is a project where i can build a pdf translator using python so python can read the pdf document to txt.</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-9.webp" title="PDF parser" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>End Portfolio Item 
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/img/masonry-portfolio/masonry-portfolio-10.webp" class="img-fluid" alt="project tajalmodon">
-              <div class="portfolio-info">
-                <h4>Taj Al Modon Trading Company</h4>
-                <p>This is a project for a company in saudi called Taj Al Modon they are specialized in Furniture selling I made them a website to show their products www.tajalmodon.com .</p>
-                <a href="static/img/masonry-portfolio/masonry-portfolio-10.webp" title="Taj Al Modon Trading Company" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>End Portfolio Item 
+        <!-- Info Column -->
+        <div class="lg:col-span-8 space-y-6">
+          <h3 class="text-3xl font-bold text-gray-900">Fares Hamid Abdo Mohammed</h3>
           
-          </div><!-- End Portfolio Container -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Portfolio Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item item-cyan position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
-                </svg>
-                <i class="bi bi-activity"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>AI, NLP Chatbot integration</h3>
-              </a>
-              <p>Full chatbot integration and building.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-base text-gray-700 bg-gray-50/80 p-8 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="space-y-4">
+              <p><strong class="text-gray-900 font-semibold">Birthday:</strong> 6 November 2002</p>
+              <p><strong class="text-gray-900 font-semibold">Website:</strong> <a href="https://fareshamid.com" target="_blank" class="text-primary hover:underline">fareshamid.com</a></p>
+              <p><strong class="text-gray-900 font-semibold">Phone & WhatsApp:</strong> <a href="https://wa.me/601127317596" target="_blank" class="text-primary hover:underline">+60 11 2731 7596</a></p>
+              <p><strong class="text-gray-900 font-semibold">City:</strong> Johor Bahru, Malaysia</p>
             </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item item-orange position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"></path>
-                </svg>
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>APIs integration</h3>
-              </a>
-              <p>Safekeeping for APIs and integrating them into the site & chatbots.</p>
+            <div class="space-y-4">
+              <p><strong class="text-gray-900 font-semibold">Age:</strong> 23</p>
+              <p><strong class="text-gray-900 font-semibold">Degree:</strong> Software Engineering</p>
+              <p><strong class="text-gray-900 font-semibold">Email:</strong> <a href="mailto:faresexpress2@gmail.com" class="text-primary hover:underline">faresexpress2@gmail.com</a></p>
             </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item item-teal position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"></path>
-                </svg>
-                <i class="bi bi-easel"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Website Development</h3>
-              </a>
-              <p>Complete development for websites.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item item-red position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
-                </svg>
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Maintenance</h3>
-              </a>
-              <p>Always there for maintenance on any project I participate in.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item item-indigo position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
-                </svg>
-                <i class="bi bi-calendar4-week icon"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Designing</h3>
-              </a>
-              <p>Design using AI tools fully and beautifully.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <!-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item item-pink position-relative">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
-                </svg>
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Dolori Architecto</h3>
-              </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div>End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-    <!-- Testimonials Section 
-    <section id="testimonials" class="testimonials section">
-
-      Section Title 
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div>End Section Title 
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row gy-4 justify-content-center">
-                  <div class="col-lg-6">
-                    <div class="testimonial-content">
-                      <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                      </p>
-                      <h3>Saul Goodman</h3>
-                      <h4>Ceo &amp; Founder</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <img src="static/img/testimonials/testimonials-1.jpg" class="img-fluid testimonial-img" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row gy-4 justify-content-center">
-                  <div class="col-lg-6">
-                    <div class="testimonial-content">
-                      <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                      </p>
-                      <h3>Sara Wilsson</h3>
-                      <h4>Designer</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <img src="static/img/testimonials/testimonials-2.jpg" class="img-fluid testimonial-img" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row gy-4 justify-content-center">
-                  <div class="col-lg-6">
-                    <div class="testimonial-content">
-                      <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                      </p>
-                      <h3>Jena Karlis</h3>
-                      <h4>Store Owner</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <img src="static/img/testimonials/testimonials-3.jpg" class="img-fluid testimonial-img" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row gy-4 justify-content-center">
-                  <div class="col-lg-6">
-                    <div class="testimonial-content">
-                      <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                      </p>
-                      <h3>John Larson</h3>
-                      <h4>Entrepreneur</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <img src="static/img/testimonials/testimonials-4.jpg" class="img-fluid testimonial-img" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>End testimonial item 
-
           </div>
-          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
+      <div class="max-w-7xl mx-auto w-full">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900">Skills</h2>
+          <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+          <p class="mt-4 text-gray-600">These are some of the skills I have gained during my learning.</p>
         </div>
 
-      </div>
-
-    </section>/Testimonials Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>"Please call me to schedule a meeting; I would be happy to discuss further."</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Jalan Sejahtera 15, Johor Bahru, JB 81300</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3><a href="https://wa.me/601127317596" target="_blank">CALL or Message</a></h3>
-                <p><a href="https://wa.me/601127317596" target="_blank">+601127317596</a></p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Schedule a meeting</h3>
-                <p><a href="mailto:faresexpress2@gmail.com" target="_blank">faresexpress2@gmail.com</a></p>
-              </div>
-            </div><!-- End Info Item -->
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>Web Development</span>
+              <span class="text-primary">81%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 81%"></div>
+            </div>
           </div>
 
-          <div class="col-lg-8">
-            <form class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>Python</span>
+              <span class="text-primary">80%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 80%"></div>
+            </div>
+          </div>
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>JavaScript</span>
+              <span class="text-primary">75%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>AI Tools & Prompt Engineering</span>
+              <span class="text-primary">91%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 91%"></div>
+            </div>
+          </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>Chatbot Development</span>
+              <span class="text-primary">43%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 43%"></div>
+            </div>
+          </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading d-none">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message d-none">Your message has been sent. Thank you!</div>
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
+          <div>
+            <div class="flex justify-between font-semibold text-sm mb-2">
+              <span>API Integration</span>
+              <span class="text-primary">17%</span>
+            </div>
+            <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+              <div class="bg-primary h-full rounded-full" style="width: 17%"></div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
+    <!-- RESUME SECTION -->
+    <section id="resume" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 max-w-7xl mx-auto flex flex-col justify-center">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Resume</h2>
+        <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
       </div>
 
-    </section><!-- /Contact Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Education & Summary -->
+        <div class="space-y-8">
+          <h3 class="text-2xl font-bold text-gray-900 border-b pb-3">Education & Summary</h3>
+          
+          <div class="border-l-2 border-primary pl-6 relative space-y-2">
+            <div class="w-3.5 h-3.5 bg-primary rounded-full absolute -left-[8px] top-1"></div>
+            <h4 class="font-bold text-xl text-gray-900">Fares Hamid</h4>
+            <p class="text-sm italic text-gray-600">Innovative software developer with 2+ years of experience building, developing, and integrating APIs with self-taught experience in modern tools.</p>
+            <ul class="text-sm text-gray-600 space-y-1 pt-2">
+              <li><i class="bi bi-geo-alt text-primary mr-1"></i> Taman University, Johor Bahru, Johor</li>
+              <li><i class="bi bi-telephone text-primary mr-1"></i> +60 11 2731 7596</li>
+              <li><i class="bi bi-envelope text-primary mr-1"></i> Faresexpress2@gmail.com</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-primary pl-6 relative space-y-2">
+            <div class="w-3.5 h-3.5 bg-primary rounded-full absolute -left-[8px] top-1"></div>
+            <h4 class="font-bold text-xl text-gray-900">Software Engineering Degree</h4>
+            <span class="inline-block bg-blue-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">2022 - 2025 (Ongoing)</span>
+            <p class="text-sm font-medium text-gray-700">Universiti Teknologi Malaysia (UTM), Johor</p>
+          </div>
+
+          <div class="border-l-2 border-primary pl-6 relative space-y-2">
+            <div class="w-3.5 h-3.5 bg-primary rounded-full absolute -left-[8px] top-1"></div>
+            <h4 class="font-bold text-xl text-gray-900">Python & NLP Chatbot with LLMs</h4>
+            <span class="inline-block bg-blue-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">Self-Taught</span>
+            <p class="text-sm text-gray-600">Utilizing Gemini 2.0, Flask, and Pro models for development. Certificates from Udemy (PCEP), Excel, and volunteering projects.</p>
+          </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="space-y-8">
+          <h3 class="text-2xl font-bold text-gray-900 border-b pb-3">Professional Experience</h3>
+
+          <div class="border-l-2 border-primary pl-6 relative space-y-2">
+            <div class="w-3.5 h-3.5 bg-primary rounded-full absolute -left-[8px] top-1"></div>
+            <h4 class="font-bold text-xl text-gray-900">Training Data for Chatbot</h4>
+            <span class="inline-block bg-blue-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">March 2025</span>
+            <p class="text-sm italic font-medium text-gray-700">UTM & ISS-YEMEN Volunteering Project</p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-2 pt-1">
+              <li>Building a complete chat agent that collects data from UTM resources to answer community questions.</li>
+              <li>Teaching the chatbot how to reply using NLP with libraries like PyTorch.</li>
+              <li>Handled data collection and preprocessing at the project start.</li>
+            </ul>
+          </div>
+
+          <div class="border-l-2 border-primary pl-6 relative space-y-2">
+            <div class="w-3.5 h-3.5 bg-primary rounded-full absolute -left-[8px] top-1"></div>
+            <h4 class="font-bold text-xl text-gray-900">Accountant Background</h4>
+            <span class="inline-block bg-blue-100 text-primary text-xs font-semibold px-3 py-1 rounded-full">2019 - 2021</span>
+            <p class="text-sm italic font-medium text-gray-700">al-galith, Abha, Saudi Arabia</p>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pt-1">
+              <li>Worked for 1.5 years as an Accountant in a medium-sized company, mastering job priorities and tax regulations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
+      <div class="max-w-7xl mx-auto w-full">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900">Portfolio & Projects</h2>
+          <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+          <p class="mt-4 text-gray-600">Certificates and projects made during my study period.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-1.webp" alt="PCEP Certificate" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
+              <h3 class="font-bold text-base text-gray-900">PCEP Python Certificate</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Udemy certificate for completing Python fundamentals training.</p>
+              <a href="portfolio-details.html#item-1" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-2.webp" alt="Excel Certificate" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
+              <h3 class="font-bold text-base text-gray-900">Excel & Macros Certificate</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Attending course on Excel macros, spreadsheet automation, and data workflows.</p>
+              <a href="portfolio-details.html#item-2" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-3.webp" alt="Cyber Security Workshop" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
+              <h3 class="font-bold text-base text-gray-900">Cyber Security Workshop</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Certificate for attending an intensive workshop on Cyber Security fundamentals.</p>
+              <a href="portfolio-details.html#item-3" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-4.webp" alt="IELTS Certificate" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
+              <h3 class="font-bold text-base text-gray-900">IELTS Prep Course</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Certificate for completing IELTS preparation course at EMS Institute.</p>
+              <a href="portfolio-details.html#item-4" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-5.webp" alt="Volunteering Certificate" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Volunteering</span>
+              <h3 class="font-bold text-base text-gray-900">ISS-YEMEN YSAG Head</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Volunteering in ISS-YEMEN YSAG as the head of Computing Faculty of Yemeni students.</p>
+              <a href="portfolio-details.html#item-5" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-6.webp" alt="ChatUTM" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded">AI Chatbot</span>
+              <h3 class="font-bold text-base text-gray-900">ChatUTM</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Telegram API integrated chatbot that answers questions for UTM university Arab community.</p>
+              <a href="portfolio-details.html#item-6" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-7.webp" alt="Coffee Chronicles" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded">Web & AI</span>
+              <h3 class="font-bold text-base text-gray-900">The Coffee Chronicles</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Informative coffee origins website with an integrated chat agent to answer coffee questions.</p>
+              <a href="portfolio-details.html#item-7" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-8.webp" alt="React Performance" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded">React Dev</span>
+              <h3 class="font-bold text-base text-gray-900">React Performance</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Project solving performance bottlenecks to maximize speed using React optimization tools.</p>
+              <a href="portfolio-details.html#item-8" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-9.webp" alt="PDF Parser" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2 py-0.5 rounded">Python Script</span>
+              <h3 class="font-bold text-base text-gray-900">PDF Parser & Extractor</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Python script to parse PDF documents and extract clean text content into text files.</p>
+              <a href="portfolio-details.html#item-9" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <img src="static/img/masonry-portfolio/masonry-portfolio-10.webp" alt="Taj Al Modon" class="w-full h-44 object-cover">
+            <div class="p-4 space-y-2">
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded">Commercial</span>
+              <h3 class="font-bold text-base text-gray-900">Taj Al Modon Co.</h3>
+              <p class="text-gray-600 text-xs line-clamp-2">Showcase furniture catalog website for a trading company in Saudi Arabia.</p>
+              <a href="portfolio-details.html#item-10" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
+                View Full Document <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 max-w-7xl mx-auto flex flex-col justify-center">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900">Services</h2>
+        <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition text-center space-y-4">
+          <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto">
+            <i class="bi bi-robot"></i>
+          </div>
+          <h3 class="font-bold text-xl text-gray-900">AI & Chatbot Dev</h3>
+          <p class="text-gray-600 text-sm">Full AI chatbot integration, NLP training, and prompt engineering.</p>
+        </div>
+
+        <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition text-center space-y-4">
+          <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <h3 class="font-bold text-xl text-gray-900">Website Development</h3>
+          <p class="text-gray-600 text-sm">Complete development for high-speed, modern websites using modern frameworks.</p>
+        </div>
+
+        <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition text-center space-y-4">
+          <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto">
+            <i class="bi bi-broadcast"></i>
+          </div>
+          <h3 class="font-bold text-xl text-gray-900">API Integration</h3>
+          <p class="text-gray-600 text-sm">Safekeeping and integration of APIs into web applications and telegram bots.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
+      <div class="max-w-4xl mx-auto w-full">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900">Contact</h2>
+          <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+          <p class="mt-4 text-gray-600 italic">"Please call me or send a message to schedule a meeting; I would be happy to discuss further."</p>
+        </div>
+
+        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-gray-100">
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <textarea name="message" rows="5" placeholder="Message" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+
+            <div id="form-status" class="hidden text-center py-3 rounded-lg text-sm font-semibold"></div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-white border-t border-gray-200 text-center text-gray-500 text-sm">
+      <p>© Fares Hamid. All Rights Reserved.</p>
+    </footer>
 
   </main>
 
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <h3 class="sitename">Fares Hamid</h3>
-      <!--<p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>-->
-      <div class="social-links d-flex justify-content-center">
-        <!--<a href="https://x.com/faresexpress2" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter-x"></i></a>-->
-        <a href="https://www.linkedin.com/in/fares-hamid-858118269/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/uchiha0bd" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Fares Hamid</strong> <span>All Rights Reserved</span>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuited by <a href="https://themewagon.com">ThemeWagon</a>-->
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- LIGHTWEIGHT VANILLA JAVASCRIPT -->
+  <script>
+    // 1. Mobile Top Horizontal Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('opacity-0');
+      mobileMenu.classList.toggle('pointer-events-none');
+      mobileMenu.classList.toggle('-translate-y-6');
+      mobileMenu.classList.toggle('translate-y-0');
+      mobileMenu.classList.toggle('opacity-100');
+      mobileMenu.classList.toggle('pointer-events-auto');
+    });
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    // Close mobile top horizontal menu when clicking any item
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-6');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      });
+    });
 
-  <!-- Vendor JS Files -->
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/vendor/aos/aos.js"></script>
-  <script src="static/vendor/typed.js/typed.umd.js"></script>
-  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="static/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="static/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="static/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+    // 2. Typewriter Effect
+    const words = ["Designer", "Developer", "Freelancer", "Software Engineer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedTextSpan = document.getElementById("typed-text");
 
-  <!-- Main JS File -->
-  <script src="static/js/main.js"></script>
+    function type() {
+      const currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (words.length) setTimeout(type, 500);
+    });
+
+    // 3. Flask Async Contact Form Handler
+    const contactForm = document.getElementById('contact-form');
+    const statusBox = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending...';
+      statusBox.classList.add('hidden');
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch('/send_email', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === 'success') {
+          statusBox.className = 'text-center py-3 rounded-lg text-sm font-semibold bg-green-100 text-green-700';
+          statusBox.innerText = 'Your message has been sent successfully!';
+          contactForm.reset();
+        } else {
+          throw new Error(data.message || 'Failed to send message.');
+        }
+      } catch (err) {
+        statusBox.className = 'text-center py-3 rounded-lg text-sm font-semibold bg-red-100 text-red-700';
+        statusBox.innerText = err.message;
+      } finally {
+        statusBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send Message';
+      }
+    });
+  </script>
 
 </body>
-
 </html>

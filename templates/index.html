@@ -5,22 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fares Hamid - Software Engineer & Developer</title>
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: '#0563bb',
-            dark: '#272829',
-            lightbg: '#f9f9f9',
-          }
+          colors: { primary: '#0563bb', dark: '#272829', lightbg: '#f9f9f9' }
         }
       }
     }
@@ -29,52 +21,60 @@
 
 <body class="bg-white text-gray-800 font-sans antialiased selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
-  <!-- Mobile Top Right Menu Toggle Button (Mobile Only) -->
+  <!-- ADMIN FLOATING TOP BAR -->
+  {% if current_user.is_authenticated %}
+    <div class="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white px-6 py-2.5 flex justify-between items-center text-xs font-semibold shadow-md">
+      <span class="flex items-center gap-2"><i class="bi bi-shield-check text-green-400"></i> Admin Mode Active (Drag/Drop & Clipboard Paste Enabled)</span>
+      <div class="flex items-center gap-4">
+        <a href="#portfolio" class="hover:text-primary"><i class="bi bi-plus-circle"></i> Add Project</a>
+        <a href="#thoughts" class="hover:text-primary"><i class="bi bi-chat-left-quote"></i> Post Thought</a>
+        <a href="/admin/logout" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Mobile Top Right Menu Toggle Button -->
   <button id="menu-toggle" aria-label="Toggle navigation" class="xl:hidden fixed top-4 right-4 z-50 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition">
     <i class="bi bi-list text-xl"></i>
   </button>
 
-  <!-- Mobile Top Horizontal Menu Bar (Drops down when pressing the 3-line button on mobile) -->
+  <!-- Mobile Top Horizontal Menu Bar -->
   <div id="mobile-menu" class="xl:hidden fixed top-16 left-3 right-3 z-50 bg-white/95 backdrop-blur-md border border-gray-200/80 rounded-2xl shadow-2xl p-2 transition-all duration-300 transform -translate-y-6 opacity-0 pointer-events-none flex items-center justify-between gap-1 overflow-x-auto">
-    
     <a href="#hero" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-house text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Home</span>
     </a>
-
     <a href="#about" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-person text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">About</span>
     </a>
-
     <a href="#skills" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-bar-chart-line text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Skills</span>
     </a>
-
     <a href="#resume" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-file-earmark-text text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Resume</span>
     </a>
-
     <a href="#portfolio" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-images text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Portfolio</span>
     </a>
-
     <a href="#services" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-hdd-stack text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Services</span>
     </a>
-
+    <a href="#thoughts" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
+      <i class="bi bi-chat-left-quote text-lg"></i>
+      <span class="text-[10px] font-semibold mt-0.5">Thoughts</span>
+    </a>
     <a href="#contact" class="mobile-nav-link flex flex-col items-center justify-center p-2 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition flex-1 min-w-[48px]">
       <i class="bi bi-envelope text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">Contact</span>
     </a>
-
   </div>
 
-  <!-- Floating WhatsApp Button (Fixed Bottom Right) -->
+  <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/601127317596" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
     <i class="bi bi-whatsapp text-3xl"></i>
     <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 opacity-0 group-hover:opacity-100">
@@ -82,88 +82,65 @@
     </span>
   </a>
 
-  <!-- Desktop-Only Floating Icon Navigation (Hidden on Mobile) -->
+  <!-- Desktop Floating Icon Navigation -->
   <header id="sidebar" class="hidden xl:flex fixed top-0 bottom-0 left-4 z-40 bg-transparent flex-col justify-center items-center pointer-events-none">
     <nav class="space-y-4 pointer-events-auto flex flex-col items-center">
-      
-      <!-- Home Icon -->
       <a href="#hero" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-house text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Home
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Home</span>
       </a>
 
-      <!-- About Icon -->
       <a href="#about" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-person text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          About
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">About</span>
       </a>
 
-      <!-- Skills Icon -->
       <a href="#skills" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-bar-chart-line text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Skills
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Skills</span>
       </a>
 
-      <!-- Resume Icon -->
       <a href="#resume" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-file-earmark-text text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Resume
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Resume</span>
       </a>
 
-      <!-- Portfolio Icon -->
       <a href="#portfolio" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-images text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Portfolio
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Portfolio</span>
       </a>
 
-      <!-- Services Icon -->
       <a href="#services" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-hdd-stack text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Services
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Services</span>
       </a>
 
-      <!-- Contact Icon -->
+      <a href="#thoughts" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
+        <i class="bi bi-chat-left-quote text-xl"></i>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Thoughts</span>
+      </a>
+
       <a href="#contact" class="nav-link group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/90 hover:bg-primary text-gray-700 hover:text-white transition-colors duration-300 shadow-md border border-gray-200/80">
         <i class="bi bi-envelope text-xl"></i>
-        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">
-          Contact
-        </span>
+        <span class="absolute left-14 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 shadow-md whitespace-nowrap">Contact</span>
       </a>
-
     </nav>
   </header>
 
-  <!-- Main Content Wrapper (100% width on Mobile) -->
+  <!-- Main Content Wrapper -->
   <main class="w-full overflow-x-hidden">
 
     <!-- HERO SECTION -->
     <section id="hero" class="min-h-screen relative flex items-center justify-center px-4 sm:px-8 py-20 overflow-hidden">
-      <!-- Background Image -->
       <img src="static/img/hero-bg.webp" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover z-0">
-      <!-- Light Overlay for text readability -->
       <div class="absolute inset-0 bg-white/65 backdrop-blur-[1px] z-10"></div>
 
       <div class="relative z-20 max-w-5xl text-center space-y-6">
         <h1 class="text-5xl sm:text-7xl font-extrabold text-gray-900 tracking-tight">Fares Hamid</h1>
-        
-        <!-- Typewriter text -->
         <p class="text-2xl sm:text-3xl text-gray-700 font-medium">
           I'm <span id="typed-text" class="text-primary font-semibold border-b-2 border-primary"></span><span class="animate-pulse text-primary font-bold">|</span>
         </p>
 
-        <!-- Social Links -->
         <div class="flex justify-center gap-4 pt-4">
           <a href="https://www.linkedin.com/in/fares-hamid-858118269/" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-white/90 shadow-md border border-gray-200 text-gray-700 hover:text-primary hover:border-primary flex items-center justify-center text-xl transition transform hover:-translate-y-1">
             <i class="bi bi-linkedin"></i>
@@ -189,12 +166,10 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <!-- Profile Image -->
         <div class="lg:col-span-4 flex justify-center">
           <img src="static/img/profile-img.webp" alt="Fares Hamid Profile" class="rounded-2xl shadow-xl w-80 lg:w-full max-w-xs object-cover border-4 border-white">
         </div>
 
-        <!-- Info Column -->
         <div class="lg:col-span-8 space-y-6">
           <h3 class="text-3xl font-bold text-gray-900">Fares Hamid Abdo Mohammed</h3>
           
@@ -296,7 +271,6 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Education & Summary -->
         <div class="space-y-8">
           <h3 class="text-2xl font-bold text-gray-900 border-b pb-3">Education & Summary</h3>
           
@@ -326,7 +300,6 @@
           </div>
         </div>
 
-        <!-- Professional Experience -->
         <div class="space-y-8">
           <h3 class="text-2xl font-bold text-gray-900 border-b pb-3">Professional Experience</h3>
 
@@ -357,134 +330,77 @@
 
     <!-- PORTFOLIO SECTION -->
     <section id="portfolio" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
-      <div class="max-w-7xl mx-auto w-full">
-        <div class="text-center mb-12">
+      <div class="max-w-7xl mx-auto w-full space-y-8">
+        <div class="text-center">
           <h2 class="text-3xl font-bold text-gray-900">Portfolio & Projects</h2>
           <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
           <p class="mt-4 text-gray-600">Certificates and projects made during my study period.</p>
         </div>
 
+        <!-- INLINE ADD PROJECT BUTTON (With Drag, Drop & Clipboard Paste Uploader) -->
+        {% if current_user.is_authenticated %}
+          <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl space-y-4">
+            <h3 class="font-bold text-gray-900 flex items-center gap-2"><i class="bi bi-plus-circle text-primary"></i> Admin: Add New Project</h3>
+            <form action="/admin/project/add" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <input type="text" name="title" placeholder="Project Title *" required class="px-3 py-2 border rounded-lg">
+              <input type="text" name="category" placeholder="Category *" required class="px-3 py-2 border rounded-lg">
+              <input type="text" name="client" placeholder="Client Name" class="px-3 py-2 border rounded-lg">
+              <input type="text" name="date" placeholder="Project Date" class="px-3 py-2 border rounded-lg">
+              <input type="url" name="website" placeholder="Website URL" class="px-3 py-2 border rounded-lg md:col-span-2">
+              <input type="text" name="tech_stack" placeholder="Tech Stack (comma separated)" class="px-3 py-2 border rounded-lg md:col-span-2">
+              <textarea name="short_desc" placeholder="Short Description *" required rows="2" class="px-3 py-2 border rounded-lg md:col-span-2"></textarea>
+              <textarea name="long_desc" placeholder="Detailed Overview for Details Page" rows="2" class="px-3 py-2 border rounded-lg md:col-span-2"></textarea>
+              
+              <!-- Drag, Drop & Clipboard Paste Area for New Projects -->
+              <div class="md:col-span-2 space-y-2">
+                <label class="block text-xs font-bold text-gray-800">Upload Screenshots / Photos:</label>
+                <div id="new-project-dropzone" class="border-2 border-dashed border-blue-300 hover:border-primary rounded-xl p-4 text-center cursor-pointer bg-white transition space-y-1">
+                  <i class="bi bi-cloud-arrow-up text-2xl text-primary"></i>
+                  <p class="text-xs font-semibold text-gray-700">
+                    Drag & Drop photos here, click to browse, or press <kbd class="px-1.5 py-0.5 bg-gray-200 rounded text-[10px] font-mono border">Ctrl + V</kbd> to paste images
+                  </p>
+                  <input type="file" id="new-project-input" name="images" multiple accept="image/*" class="hidden">
+                </div>
+                <div id="new-project-previews" class="flex flex-wrap gap-2 hidden"></div>
+              </div>
+
+              <button type="submit" class="md:col-span-2 bg-primary hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition">Publish Project</button>
+            </form>
+          </div>
+        {% endif %}
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-1.webp" alt="PCEP Certificate" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
-              <h3 class="font-bold text-base text-gray-900">PCEP Python Certificate</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Udemy certificate for completing Python fundamentals training.</p>
-              <a href="portfolio-details.html#item-1" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+          <!-- DYNAMIC PROJECTS FROM DATABASE -->
+          {% for project in projects %}
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col justify-between relative group">
+              <div>
+                {% if project.images %}
+                  <img src="static/{{ project.images[0].image_path }}" alt="{{ project.title }}" class="w-full h-44 object-cover">
+                {% else %}
+                  <div class="w-full h-44 bg-gray-100 flex items-center justify-center text-gray-400">
+                    <i class="bi bi-image text-3xl"></i>
+                  </div>
+                {% endif %}
+                <div class="p-4 space-y-2">
+                  <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">{{ project.category }}</span>
+                  <h3 class="font-bold text-base text-gray-900">{{ project.title }}</h3>
+                  <p class="text-gray-600 text-xs line-clamp-2">{{ project.short_desc }}</p>
+                </div>
+              </div>
+              <div class="p-4 pt-0 flex justify-between items-center">
+                <a href="portfolio-details.html#project-{{ project.id }}" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold">
+                  View Full Project <i class="bi bi-arrow-right"></i>
+                </a>
 
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-2.webp" alt="Excel Certificate" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
-              <h3 class="font-bold text-base text-gray-900">Excel & Macros Certificate</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Attending course on Excel macros, spreadsheet automation, and data workflows.</p>
-              <a href="portfolio-details.html#item-2" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
+                {% if current_user.is_authenticated %}
+                  <form action="/admin/project/delete/{{ project.id }}" method="POST" onsubmit="return confirm('Delete this project?');">
+                    <button type="submit" class="text-red-500 hover:text-red-700 text-xs p-1"><i class="bi bi-trash"></i> Delete</button>
+                  </form>
+                {% endif %}
+              </div>
             </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-3.webp" alt="Cyber Security Workshop" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
-              <h3 class="font-bold text-base text-gray-900">Cyber Security Workshop</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Certificate for attending an intensive workshop on Cyber Security fundamentals.</p>
-              <a href="portfolio-details.html#item-3" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-4.webp" alt="IELTS Certificate" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Certificate</span>
-              <h3 class="font-bold text-base text-gray-900">IELTS Prep Course</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Certificate for completing IELTS preparation course at EMS Institute.</p>
-              <a href="portfolio-details.html#item-4" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-5.webp" alt="Volunteering Certificate" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-blue-100 text-primary font-semibold px-2 py-0.5 rounded">Volunteering</span>
-              <h3 class="font-bold text-base text-gray-900">ISS-YEMEN YSAG Head</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Volunteering in ISS-YEMEN YSAG as the head of Computing Faculty of Yemeni students.</p>
-              <a href="portfolio-details.html#item-5" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-6.webp" alt="ChatUTM" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded">AI Chatbot</span>
-              <h3 class="font-bold text-base text-gray-900">ChatUTM</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Telegram API integrated chatbot that answers questions for UTM university Arab community.</p>
-              <a href="portfolio-details.html#item-6" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-7.webp" alt="Coffee Chronicles" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded">Web & AI</span>
-              <h3 class="font-bold text-base text-gray-900">The Coffee Chronicles</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Informative coffee origins website with an integrated chat agent to answer coffee questions.</p>
-              <a href="portfolio-details.html#item-7" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-8.webp" alt="React Performance" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-0.5 rounded">React Dev</span>
-              <h3 class="font-bold text-base text-gray-900">React Performance</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Project solving performance bottlenecks to maximize speed using React optimization tools.</p>
-              <a href="portfolio-details.html#item-8" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-9.webp" alt="PDF Parser" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2 py-0.5 rounded">Python Script</span>
-              <h3 class="font-bold text-base text-gray-900">PDF Parser & Extractor</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Python script to parse PDF documents and extract clean text content into text files.</p>
-              <a href="portfolio-details.html#item-9" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-10.webp" alt="Taj Al Modon" class="w-full h-44 object-cover">
-            <div class="p-4 space-y-2">
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded">Commercial</span>
-              <h3 class="font-bold text-base text-gray-900">Taj Al Modon Co.</h3>
-              <p class="text-gray-600 text-xs line-clamp-2">Showcase furniture catalog website for a trading company in Saudi Arabia.</p>
-              <a href="portfolio-details.html#item-10" class="inline-flex items-center gap-1 text-primary hover:underline text-xs font-semibold pt-1">
-                View Full Document <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+          {% endfor %}
 
         </div>
       </div>
@@ -524,31 +440,102 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
-      <div class="max-w-4xl mx-auto w-full">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900">Contact</h2>
+    <!-- FARES THOUGHTS SECTION -->
+    <section id="thoughts" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 bg-lightbg flex flex-col justify-center">
+      <div class="max-w-4xl mx-auto w-full space-y-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold text-gray-900">Fares Thoughts</h2>
           <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
-          <p class="mt-4 text-gray-600 italic">"Please call me or send a message to schedule a meeting; I would be happy to discuss further."</p>
+          <p class="mt-4 text-gray-600">Short ideas, updates, and software engineering insights posted directly by me.</p>
         </div>
 
-        <div class="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-gray-100">
-          <form id="contact-form" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-              <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-            </div>
-            <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-            <textarea name="message" rows="5" placeholder="Message" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+        <!-- INLINE POST THOUGHT FORM (With Drag, Drop & Clipboard Paste Uploader) -->
+        {% if current_user.is_authenticated %}
+          <div class="bg-blue-50 border border-blue-200 p-6 rounded-2xl space-y-4">
+            <h3 class="font-bold text-gray-900 flex items-center gap-2"><i class="bi bi-chat-left-quote text-primary"></i> Admin: Post a New Thought</h3>
+            <form action="/admin/thought/add" method="POST" enctype="multipart/form-data" class="space-y-4 text-sm">
+              <textarea name="content" placeholder="Write your thought / tweet..." required rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+              
+              <div class="space-y-2">
+                <label class="block text-xs font-bold text-gray-800">Optional Photo (Drag/Drop or Ctrl+V Paste):</label>
+                <div id="thought-dropzone" class="border-2 border-dashed border-blue-300 hover:border-primary rounded-xl p-3 text-center cursor-pointer bg-white transition">
+                  <p class="text-xs font-semibold text-gray-600">
+                    <i class="bi bi-cloud-arrow-up text-primary mr-1"></i> Drag & Drop photo, click to browse, or <kbd class="px-1 py-0.5 bg-gray-200 rounded text-[10px] font-mono">Ctrl + V</kbd>
+                  </p>
+                  <input type="file" id="thought-input" name="image" accept="image/*" class="hidden">
+                </div>
+                <div id="thought-previews" class="flex flex-wrap gap-2 hidden"></div>
+              </div>
 
-            <div id="form-status" class="hidden text-center py-3 rounded-lg text-sm font-semibold"></div>
+              <div class="flex justify-end">
+                <button type="submit" class="bg-primary hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-lg transition">Publish Thought</button>
+              </div>
+            </form>
+          </div>
+        {% endif %}
 
-            <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200">
-              Send Message
-            </button>
-          </form>
-        </div>
+        {% if thoughts %}
+          <div class="space-y-6">
+            {% for thought in thoughts %}
+              <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4 relative group">
+                <div class="flex justify-between items-start">
+                  <div class="flex items-center gap-3">
+                    <img src="static/img/profile-img.webp" alt="Fares Hamid" class="w-11 h-11 rounded-full object-cover border-2 border-primary/20">
+                    <div>
+                      <h3 class="font-bold text-gray-900 text-base">Fares Hamid</h3>
+                      <p class="text-xs text-gray-400">@faresexpress2 • {{ thought.created_at.strftime('%b %d, %Y') }}</p>
+                    </div>
+                  </div>
+
+                  {% if current_user.is_authenticated %}
+                    <form action="/admin/thought/delete/{{ thought.id }}" method="POST" onsubmit="return confirm('Delete this thought?');">
+                      <button type="submit" class="text-red-500 hover:text-red-700 text-xs p-1"><i class="bi bi-trash"></i> Delete</button>
+                    </form>
+                  {% endif %}
+                </div>
+
+                <p class="text-gray-800 text-base leading-relaxed">{{ thought.content }}</p>
+
+                {% if thought.image_path %}
+                  <div class="rounded-xl overflow-hidden border border-gray-100 bg-gray-50/50">
+                    <img src="static/{{ thought.image_path }}" alt="Thought Photo" class="max-h-80 w-auto object-contain mx-auto">
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="bg-white p-8 rounded-2xl text-center border border-gray-100 text-gray-500">
+            <i class="bi bi-chat-left-quote text-3xl text-primary/50 mb-2 block"></i>
+            <p class="text-sm font-medium">No thoughts posted yet. Check back soon!</p>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="min-h-screen py-16 px-4 sm:px-8 lg:px-16 xl:pl-20 max-w-4xl mx-auto flex flex-col justify-center">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Contact</h2>
+        <div class="w-16 h-1 bg-primary mx-auto mt-3 rounded-full"></div>
+        <p class="mt-4 text-gray-600 italic">"Please call me or send a message to schedule a meeting; I would be happy to discuss further."</p>
+      </div>
+
+      <div class="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-gray-100">
+        <form id="contact-form" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+          </div>
+          <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+          <textarea name="message" rows="5" placeholder="Message" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+
+          <div id="form-status" class="hidden text-center py-3 rounded-lg text-sm font-semibold"></div>
+
+          <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200">
+            Send Message
+          </button>
+        </form>
       </div>
     </section>
 
@@ -559,9 +546,7 @@
 
   </main>
 
-  <!-- LIGHTWEIGHT VANILLA JAVASCRIPT -->
   <script>
-    // 1. Mobile Top Horizontal Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -574,7 +559,6 @@
       mobileMenu.classList.toggle('pointer-events-auto');
     });
 
-    // Close mobile top horizontal menu when clicking any item
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-6');
@@ -582,7 +566,6 @@
       });
     });
 
-    // 2. Typewriter Effect
     const words = ["Designer", "Developer", "Freelancer", "Software Engineer"];
     let wordIndex = 0;
     let charIndex = 0;
@@ -618,7 +601,6 @@
       if (words.length) setTimeout(type, 500);
     });
 
-    // 3. Flask Async Contact Form Handler
     const contactForm = document.getElementById('contact-form');
     const statusBox = document.getElementById('form-status');
     const submitBtn = document.getElementById('submit-btn');
@@ -657,6 +639,102 @@
       }
     });
   </script>
+
+  <!-- UPLOADER SCRIPT FOR INDEX PAGE (New Projects & Thoughts) -->
+  {% if current_user.is_authenticated %}
+    <script>
+      function setupUploader(dropZoneId, inputId, previewContainerId) {
+        const dropZone = document.getElementById(dropZoneId);
+        const input = document.getElementById(inputId);
+        const previewContainer = document.getElementById(previewContainerId);
+
+        if (!dropZone || !input) return;
+
+        const dt = new DataTransfer();
+
+        function updateInputAndPreviews() {
+          input.files = dt.files;
+          renderPreviews();
+        }
+
+        function addFiles(files) {
+          for (let i = 0; i < files.length; i++) {
+            if (files[i].type.startsWith('image/')) {
+              dt.items.add(files[i]);
+            }
+          }
+          updateInputAndPreviews();
+        }
+
+        function renderPreviews() {
+          if (!previewContainer) return;
+          previewContainer.innerHTML = '';
+          if (dt.files.length === 0) {
+            previewContainer.classList.add('hidden');
+            return;
+          }
+          previewContainer.classList.remove('hidden');
+
+          Array.from(dt.files).forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              const div = document.createElement('div');
+              div.className = 'relative group w-16 h-16 rounded-lg overflow-hidden border border-gray-300 shadow-sm shrink-0 bg-white';
+              div.innerHTML = `
+                <img src="${e.target.result}" class="w-full h-full object-cover">
+                <button type="button" class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-[10px] flex items-center justify-center shadow hover:bg-red-700" title="Remove">
+                  &times;
+                </button>
+              `;
+              div.querySelector('button').addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                dt.items.remove(index);
+                updateInputAndPreviews();
+              });
+              previewContainer.appendChild(div);
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+
+        dropZone.addEventListener('click', () => input.click());
+
+        ['dragenter', 'dragover'].forEach(name => {
+          dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.add('border-primary', 'bg-blue-50/50');
+          });
+        });
+
+        ['dragleave', 'drop'].forEach(name => {
+          dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.remove('border-primary', 'bg-blue-50/50');
+          });
+        });
+
+        dropZone.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
+        input.addEventListener('change', () => addFiles(input.files));
+
+        window.addEventListener('paste', (e) => {
+          const items = e.clipboardData ? e.clipboardData.items : [];
+          const pasted = [];
+          for (let item of items) {
+            if (item.type.indexOf('image') !== -1) {
+              const file = item.getAsFile();
+              if (file) pasted.push(file);
+            }
+          }
+          if (pasted.length > 0) addFiles(pasted);
+        });
+      }
+
+      setupUploader('new-project-dropzone', 'new-project-input', 'new-project-previews');
+      setupUploader('thought-dropzone', 'thought-input', 'thought-previews');
+    </script>
+  {% endif %}
 
 </body>
 </html>

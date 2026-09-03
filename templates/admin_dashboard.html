@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Fares Hamid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#0563bb' } } } }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+  <!-- Admin Top Bar -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+        <i class="bi bi-speedometer2 text-primary"></i> Admin Dashboard
+      </h1>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="/" target="_blank" class="text-gray-600 hover:text-primary"><i class="bi bi-globe"></i> View Site</a>
+        <a href="/admin/logout" class="bg-red-50 text-red-600 px-3 py-1.5 rounded-lg font-semibold hover:bg-red-100 transition"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8 space-y-10">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="p-4 rounded-xl text-sm font-semibold bg-green-100 text-green-700">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- LEFT COLUMN: Forms -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <!-- FORM 1: Add New Project with Multiple Photos -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 border-b pb-2 flex items-center gap-2">
+            <i class="bi bi-plus-circle text-primary"></i> Add New Project
+          </h2>
+
+          <form action="/admin/project/add" method="POST" enctype="multipart/form-data" class="space-y-4 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-semibold mb-1">Project Title *</label>
+                <input type="text" name="title" required placeholder="e.g. Taj Al Modon Website" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none">
+              </div>
+              <div>
+                <label class="block font-semibold mb-1">Category *</label>
+                <input type="text" name="category" required placeholder="e.g. Commercial Site" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block font-semibold mb-1">Client</label>
+                <input type="text" name="client" placeholder="e.g. Taj Al Modon Co." class="w-full px-3 py-2 border rounded-lg">
+              </div>
+              <div>
+                <label class="block font-semibold mb-1">Date</label>
+                <input type="text" name="date" placeholder="e.g. Sept 2026" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+              <div>
+                <label class="block font-semibold mb-1">Website URL</label>
+                <input type="url" name="website" placeholder="https://..." class="w-full px-3 py-2 border rounded-lg">
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-1">Tech Stack (comma separated)</label>
+              <input type="text" name="tech_stack" placeholder="Python, Flask, Tailwind" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-1">Short Description (for Home Card) *</label>
+              <textarea name="short_desc" required rows="2" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-1">Detailed Overview (for Details Page)</label>
+              <textarea name="long_desc" rows="3" class="w-full px-3 py-2 border rounded-lg"></textarea>
+            </div>
+
+            <!-- MULTIPLE PHOTO UPLOADER -->
+            <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+              <label class="block font-bold text-gray-900 mb-1">
+                Upload Project Screenshots / Photos (Hold Ctrl/Cmd to select MULTIPLE files) *
+              </label>
+              <input type="file" name="images" multiple accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-blue-700">
+            </div>
+
+            <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg transition">
+              Publish Project
+            </button>
+          </form>
+        </div>
+
+        <!-- FORM 2: Post "Fares Thoughts" -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 border-b pb-2 flex items-center gap-2">
+            <i class="bi bi-chat-left-quote text-primary"></i> Post a New "Fares Thought"
+          </h2>
+
+          <form action="/admin/thought/add" method="POST" enctype="multipart/form-data" class="space-y-4 text-sm">
+            <div>
+              <label class="block font-semibold mb-1">Your Thought / Tweet *</label>
+              <textarea name="content" required rows="3" placeholder="What are you working on or thinking today?" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+            </div>
+
+            <div>
+              <label class="block font-semibold mb-1">Optional Photo</label>
+              <input type="file" name="image" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700">
+            </div>
+
+            <button type="submit" class="bg-primary hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-lg transition">
+              Post Thought
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Lists -->
+      <div class="lg:col-span-5 space-y-8">
+        
+        <!-- List of Existing Projects -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 border-b pb-2">Your Projects ({{ projects|length }})</h2>
+          
+          {% if projects %}
+            <div class="space-y-3 max-h-[400px] overflow-y-auto pr-1">
+              {% for project in projects %}
+                <div class="p-3 border border-gray-200 rounded-xl flex justify-between items-center text-sm">
+                  <div>
+                    <h3 class="font-bold text-gray-900">{{ project.title }}</h3>
+                    <p class="text-xs text-gray-500">{{ project.category }} • {{ project.images|length }} photos</p>
+                  </div>
+                  <form action="/admin/project/delete/{{ project.id }}" method="POST" onsubmit="return confirm('Delete this project?');">
+                    <button type="submit" class="text-red-600 hover:text-red-800 p-2"><i class="bi bi-trash"></i></button>
+                  </form>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-xs text-gray-500 italic">No dynamic projects added yet. Use the form on the left!</p>
+          {% endif %}
+        </div>
+
+        <!-- List of Fares Thoughts -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 border-b pb-2">Posted Thoughts ({{ thoughts|length }})</h2>
+          
+          {% if thoughts %}
+            <div class="space-y-3 max-h-[400px] overflow-y-auto pr-1">
+              {% for thought in thoughts %}
+                <div class="p-3 border border-gray-200 rounded-xl flex justify-between items-start text-sm">
+                  <div class="space-y-1">
+                    <p class="text-gray-800 text-xs">{{ thought.content }}</p>
+                    <p class="text-[10px] text-gray-400">{{ thought.created_at.strftime('%b %d, %Y - %H:%M') }}</p>
+                  </div>
+                  <form action="/admin/thought/delete/{{ thought.id }}" method="POST" onsubmit="return confirm('Delete this thought?');">
+                    <button type="submit" class="text-red-600 hover:text-red-800 p-1"><i class="bi bi-trash"></i></button>
+                  </form>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-xs text-gray-500 italic">No thoughts posted yet.</p>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

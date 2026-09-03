@@ -5,21 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio & Certificate Details - Fares Hamid</title>
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: '#0563bb',
-            lightbg: '#f9f9f9',
-          }
+          colors: { primary: '#0563bb', lightbg: '#f9f9f9' }
         }
       }
     }
@@ -28,7 +21,18 @@
 
 <body class="bg-lightbg text-gray-800 font-sans antialiased selection:bg-blue-500 selection:text-white">
 
-  <!-- Floating WhatsApp Button (Fixed Bottom Right) -->
+  <!-- ADMIN FLOATING TOP BAR -->
+  {% if current_user.is_authenticated %}
+    <div class="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white px-6 py-2.5 flex justify-between items-center text-xs font-semibold shadow-md">
+      <span class="flex items-center gap-2"><i class="bi bi-shield-check text-green-400"></i> Admin Mode Active (Drag/Drop & Clipboard Paste Enabled)</span>
+      <div class="flex items-center gap-4">
+        <a href="/" class="hover:text-primary"><i class="bi bi-house"></i> Home Page</a>
+        <a href="/admin/logout" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/601127317596" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group">
     <i class="bi bi-whatsapp text-3xl"></i>
     <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 text-sm font-semibold whitespace-nowrap transition-all duration-300 opacity-0 group-hover:opacity-100">
@@ -37,7 +41,7 @@
   </a>
 
   <!-- Top Navigation Bar -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm {% if current_user.is_authenticated %}mt-9{% endif %}">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-bold text-gray-900 flex items-center gap-2">
         <i class="bi bi-code-slash text-primary"></i> Fares Hamid
@@ -50,265 +54,276 @@
 
   <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
 
-    <!-- Header Title -->
     <div class="text-center space-y-3">
       <h1 class="text-4xl font-extrabold text-gray-900">Portfolio & Certificate Details</h1>
       <p class="text-gray-600 max-w-xl mx-auto">Full documents, certificates, and detailed overviews of my projects.</p>
       <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
     </div>
 
-    <!-- ITEM 1: Udemy PCEP Python Certificate -->
-    <section id="item-1" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Python Certification</span>
-          <h2 class="text-2xl font-bold text-gray-900">PCEP – Certified Entry-Level Python Programmer</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-1.webp" alt="PCEP Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Certificate awarded for attending and completing an intensive course covering core Python programming concepts. Key topics studied include foundational syntax, data structures, loops, object-oriented programming basics, and algorithm design.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
-          <p><strong class="text-gray-900">Category:</strong> Course Certificate</p>
-          <p><strong class="text-gray-900">Platform:</strong> Udemy</p>
-          <p><strong class="text-gray-900">Topic:</strong> Python Fundamentals (PCEP)</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python 3</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Programming Basics</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ALL DYNAMIC & SEEDED PROJECTS -->
+    {% for project in projects %}
+      <section id="project-{{ project.id }}" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">{{ project.category }}</span>
+              
+              <!-- ADMIN CONTROLS: EDIT / DELETE -->
+              {% if current_user.is_authenticated %}
+                <div class="flex items-center gap-3">
+                  <button onclick="document.getElementById('edit-modal-{{ project.id }}').classList.toggle('hidden')" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg font-bold transition">
+                    <i class="bi bi-pencil-square text-primary"></i> Edit Project
+                  </button>
+                  <form action="/admin/project/delete/{{ project.id }}" method="POST" onsubmit="return confirm('Delete this entire project?');">
+                    <button type="submit" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded-lg font-bold transition">
+                      <i class="bi bi-trash"></i> Delete
+                    </button>
+                  </form>
+                </div>
+              {% endif %}
+            </div>
 
-    <!-- ITEM 2: Excel Certificate -->
-    <section id="item-2" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Data Analytics</span>
-          <h2 class="text-2xl font-bold text-gray-900">Excel & Macros Training Certificate</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-2.webp" alt="Excel Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Attended a week-long intensive course covering Microsoft Excel essentials, advanced formulas, macros, data organization, and spreadsheet management workflow techniques.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
-          <p><strong class="text-gray-900">Category:</strong> Workshop Certificate</p>
-          <p><strong class="text-gray-900">Focus:</strong> Excel & Productivity</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">MS Excel</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Macros</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Data Analysis</span>
-          </div>
-        </div>
-      </div>
-    </section>
+            <h2 class="text-2xl font-bold text-gray-900">{{ project.title }}</h2>
 
-    <!-- ITEM 3: Cyber Security Workshop -->
-    <section id="item-3" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Security</span>
-          <h2 class="text-2xl font-bold text-gray-900">Cyber Security Workshop Certificate</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-3.webp" alt="Cyber Security Workshop" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Certificate awarded for attending an interactive workshop on cybersecurity fundamentals, threat awareness, system safety, network vulnerabilities, and defensive concepts.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
-          <p><strong class="text-gray-900">Category:</strong> Security Workshop</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Cyber Security</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Network Safety</span>
-          </div>
-        </div>
-      </div>
-    </section>
+            <!-- HORIZONTAL MULTI-PHOTO CAROUSEL WITH SINGLE PHOTO DELETE BUTTON -->
+            {% if project.images %}
+              <div class="space-y-2">
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 p-2 bg-gray-50/80 rounded-xl border border-gray-200/80">
+                  {% for img in project.images %}
+                    <div class="snap-center shrink-0 max-w-full flex flex-col items-center justify-center relative group">
+                      <img src="static/{{ img.image_path }}" alt="{{ project.title }}" class="max-h-[420px] w-auto object-contain rounded-lg shadow-sm border border-gray-100">
+                      
+                      <!-- ADMIN DELETE INDIVIDUAL PHOTO BUTTON -->
+                      {% if current_user.is_authenticated and project.images|length > 1 %}
+                        <form action="/admin/project-image/delete/{{ img.id }}" method="POST" onsubmit="return confirm('Delete this specific photo?');" class="absolute top-2 right-2">
+                          <button type="submit" class="bg-red-600 hover:bg-red-700 text-white p-1.5 rounded-full shadow-md transition text-xs flex items-center justify-center w-8 h-8" title="Delete this specific photo">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </form>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+                {% if project.images|length > 1 %}
+                  <p class="text-xs text-primary font-semibold text-center flex items-center justify-center gap-1">
+                    <i class="bi bi-arrows-collapse"></i> Scroll horizontally to view all {{ project.images|length }} photos
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
 
-    <!-- ITEM 4: IELTS Preparation Course -->
-    <section id="item-4" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Language Competency</span>
-          <h2 class="text-2xl font-bold text-gray-900">IELTS Preparation Certificate - EMS Institute</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-4.webp" alt="IELTS Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Completed an intensive English preparation course at the EMS Language Centre focused on academic reading, technical writing, listening comprehension, and professional speaking skills.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
-          <p><strong class="text-gray-900">Institution:</strong> EMS Language Centre</p>
-          <p><strong class="text-gray-900">Focus:</strong> IELTS & Academic English</p>
-        </div>
-      </div>
-    </section>
+            <!-- ADMIN ONLY: DRAG/DROP & CLIPBOARD PASTE PHOTO UPLOADER -->
+            {% if current_user.is_authenticated %}
+              <div class="bg-blue-50/80 p-5 rounded-xl border border-blue-200 space-y-3">
+                <p class="text-xs font-bold text-gray-900 flex items-center gap-1">
+                  <i class="bi bi-plus-circle-fill text-primary"></i> Admin: Upload Photos to this Project
+                </p>
 
-    <!-- ITEM 5: ISS-YEMEN Volunteering Certificate -->
-    <section id="item-5" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full uppercase tracking-wider">Volunteering & Leadership</span>
-          <h2 class="text-2xl font-bold text-gray-900">ISS-YEMEN YSAG Head of Computing Faculty</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-5.webp" alt="Volunteering Certificate" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Certificate recognizing leadership service as the Head of the Computing Faculty for Yemeni students at Universiti Teknologi Malaysia (UTM) under ISS-YEMEN YSAG. Led tech initiatives, community workshops, and academic guidance.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Document Details</h3>
-          <p><strong class="text-gray-900">Organization:</strong> ISS-YEMEN YSAG (UTM)</p>
-          <p><strong class="text-gray-900">Role:</strong> Head of Computing Faculty</p>
-        </div>
-      </div>
-    </section>
+                <form action="/admin/project/{{ project.id }}/add-photos" method="POST" enctype="multipart/form-data" class="space-y-3">
+                  <!-- Drag, Drop & Paste Dropzone -->
+                  <div id="drop-zone-{{ project.id }}" class="drop-zone border-2 border-dashed border-blue-300 hover:border-primary rounded-xl p-4 text-center cursor-pointer bg-white transition space-y-1">
+                    <i class="bi bi-cloud-arrow-up text-2xl text-primary"></i>
+                    <p class="text-xs font-semibold text-gray-700">
+                      Drag & Drop photos here, click to browse, or press <kbd class="px-1.5 py-0.5 bg-gray-200 rounded text-[10px] font-mono border">Ctrl + V</kbd> to paste images
+                    </p>
+                    <input type="file" id="input-{{ project.id }}" name="images" multiple accept="image/*" class="hidden">
+                  </div>
 
-    <!-- ITEM 6: ChatUTM -->
-    <section id="item-6" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider">AI Chatbot</span>
-          <h2 class="text-2xl font-bold text-gray-900">ChatUTM - Telegram Community Chatbot</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-6.webp" alt="ChatUTM" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            A Telegram API integrated chatbot trained on university resources to serve the UTM Arab student community. It utilizes PyTorch and Gemini NLP models to answer common student questions instantly, streamlining community communication.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
-          <p><strong class="text-gray-900">Client:</strong> ISS-YEMEN Volunteering Project</p>
-          <p><strong class="text-gray-900">Date:</strong> March 2025</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Flask</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Telegram API</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">PyTorch NLP</span>
-          </div>
-        </div>
-      </div>
-    </section>
+                  <!-- Live Thumbnail Previews Queue -->
+                  <div id="previews-{{ project.id }}" class="flex flex-wrap gap-2 hidden"></div>
 
-    <!-- ITEM 7: The Coffee Chronicles -->
-    <section id="item-7" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider">Web App & AI</span>
-          <h2 class="text-2xl font-bold text-gray-900">The Coffee Chronicles</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-7.webp" alt="The Coffee Chronicles" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            An informative web application that shares knowledge about coffee origins, bean processing, and brewing methods. Features an integrated conversational AI agent that answers coffee queries in real time.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
-          <p><strong class="text-gray-900">Category:</strong> Personal Project</p>
-          <p><strong class="text-gray-900">Date:</strong> April 2024</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">HTML5</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">JavaScript</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Gemini API</span>
-          </div>
-        </div>
-      </div>
-    </section>
+                  <button type="submit" class="bg-primary hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-lg transition w-full sm:w-auto">
+                    + Upload Queued Photos
+                  </button>
+                </form>
+              </div>
 
-    <!-- ITEM 8: React Performance Solutions -->
-    <section id="item-8" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-bold rounded-full uppercase tracking-wider">React Engineering</span>
-          <h2 class="text-2xl font-bold text-gray-900">React Performance Solutions</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-8.webp" alt="React Performance" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            A case study project focused on solving performance bottlenecks in React applications. Utilized code-splitting, lazy-loading, memoization (`React.memo`), and Webpack optimization to increase page rendering speed and lower initial bundle size.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
-          <p><strong class="text-gray-900">Category:</strong> Front-End Performance</p>
-          <p><strong class="text-gray-900">Date:</strong> August 2024</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">React</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Lighthouse</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Webpack</span>
-          </div>
-        </div>
-      </div>
-    </section>
+              <!-- ADMIN ONLY: INLINE EDIT FORM MODAL -->
+              <div id="edit-modal-{{ project.id }}" class="hidden bg-gray-50 p-6 rounded-xl border border-gray-300 space-y-4 text-xs">
+                <h3 class="font-bold text-sm text-gray-900 border-b pb-2">Edit Project Details</h3>
+                <form action="/admin/project/edit/{{ project.id }}" method="POST" class="space-y-3">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label class="font-bold block mb-1">Title</label>
+                      <input type="text" name="title" value="{{ project.title }}" required class="w-full px-3 py-1.5 border rounded">
+                    </div>
+                    <div>
+                      <label class="font-bold block mb-1">Category</label>
+                      <input type="text" name="category" value="{{ project.category }}" required class="w-full px-3 py-1.5 border rounded">
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                      <label class="font-bold block mb-1">Client</label>
+                      <input type="text" name="client" value="{{ project.client or '' }}" class="w-full px-3 py-1.5 border rounded">
+                    </div>
+                    <div>
+                      <label class="font-bold block mb-1">Date</label>
+                      <input type="text" name="date" value="{{ project.date or '' }}" class="w-full px-3 py-1.5 border rounded">
+                    </div>
+                    <div>
+                      <label class="font-bold block mb-1">Website URL</label>
+                      <input type="url" name="website" value="{{ project.website or '' }}" class="w-full px-3 py-1.5 border rounded">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="font-bold block mb-1">Tech Stack (comma separated)</label>
+                    <input type="text" name="tech_stack" value="{{ project.tech_stack or '' }}" class="w-full px-3 py-1.5 border rounded">
+                  </div>
+                  <div>
+                    <label class="font-bold block mb-1">Short Description</label>
+                    <textarea name="short_desc" required rows="2" class="w-full px-3 py-1.5 border rounded">{{ project.short_desc }}</textarea>
+                  </div>
+                  <div>
+                    <label class="font-bold block mb-1">Detailed Overview</label>
+                    <textarea name="long_desc" rows="3" class="w-full px-3 py-1.5 border rounded">{{ project.long_desc or '' }}</textarea>
+                  </div>
+                  <button type="submit" class="bg-primary text-white font-bold px-4 py-2 rounded">Save Changes</button>
+                </form>
+              </div>
+            {% endif %}
 
-    <!-- ITEM 9: PDF Parser -->
-    <section id="item-9" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-bold rounded-full uppercase tracking-wider">Python Scripting</span>
-          <h2 class="text-2xl font-bold text-gray-900">PDF Parser & Text Extractor</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-9.webp" alt="PDF Parser" class="max-h-[450px] w-auto object-contain rounded-lg">
+            <p class="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+              {{ project.long_desc or project.short_desc }}
+            </p>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            A Python utility tool built to parse complex PDF documents and extract raw text into structured `.txt` files. Created to automate document reading workflows and prepare training data for AI models.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
-          <p><strong class="text-gray-900">Category:</strong> Data Parsing</p>
-          <p><strong class="text-gray-900">Date:</strong> June 2024</p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Python</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">PyPDF2</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ITEM 10: Taj Al Modon -->
-    <section id="item-10" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-8 scroll-mt-24">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4">
-          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider">Commercial Site</span>
-          <h2 class="text-2xl font-bold text-gray-900">Taj Al Modon Trading Company</h2>
-          <div class="bg-gray-50 p-2 rounded-xl border border-gray-200/80 flex items-center justify-center">
-            <img src="static/img/masonry-portfolio/masonry-portfolio-10.webp" alt="Taj Al Modon" class="max-h-[450px] w-auto object-contain rounded-lg">
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Official commercial website for Taj Al Modon Trading Company in Saudi Arabia, specializing in furniture selling. Designed to present their catalog and business contacts online.
-          </p>
-        </div>
-        <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
-          <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
-          <p><strong class="text-gray-900">Client:</strong> Taj Al Modon Company (KSA)</p>
-          <p><strong class="text-gray-900">Website:</strong> <a href="https://www.tajalmodon.com" target="_blank" class="text-primary hover:underline">www.tajalmodon.com</a></p>
-          <div class="flex flex-wrap gap-2 pt-2">
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">Web Development</span>
-            <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">SEO</span>
+          <div class="bg-lightbg p-6 rounded-xl border border-gray-200/60 h-fit space-y-4 text-sm">
+            <h3 class="font-bold text-gray-900 border-b pb-2">Project Metadata</h3>
+            {% if project.client %}<p><strong class="text-gray-900">Client:</strong> {{ project.client }}</p>{% endif %}
+            {% if project.date %}<p><strong class="text-gray-900">Date:</strong> {{ project.date }}</p>{% endif %}
+            {% if project.website %}
+              <p><strong class="text-gray-900">Website:</strong> <a href="{{ project.website }}" target="_blank" class="text-primary hover:underline">{{ project.website }}</a></p>
+            {% endif %}
+            
+            {% if project.tech_stack %}
+              <div>
+                <strong class="text-gray-900 block mb-2">Tech Stack:</strong>
+                <div class="flex flex-wrap gap-2">
+                  {% for tech in project.tech_stack.split(',') %}
+                    <span class="px-2.5 py-1 bg-white border border-gray-200 rounded text-xs font-medium">{{ tech.strip() }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    {% endfor %}
 
   </main>
 
   <footer class="py-8 bg-white border-t border-gray-200 text-center text-gray-500 text-sm">
     <p>© Fares Hamid. All Rights Reserved.</p>
   </footer>
+
+  <!-- SMART DRAG, DROP & CLIPBOARD PASTE SCRIPT -->
+  {% if current_user.is_authenticated %}
+    <script>
+      function setupUploader(dropZoneId, inputId, previewContainerId) {
+        const dropZone = document.getElementById(dropZoneId);
+        const input = document.getElementById(inputId);
+        const previewContainer = document.getElementById(previewContainerId);
+
+        if (!dropZone || !input) return;
+
+        const dt = new DataTransfer();
+
+        function updateInputAndPreviews() {
+          input.files = dt.files;
+          renderPreviews();
+        }
+
+        function addFiles(files) {
+          for (let i = 0; i < files.length; i++) {
+            if (files[i].type.startsWith('image/')) {
+              dt.items.add(files[i]);
+            }
+          }
+          updateInputAndPreviews();
+        }
+
+        function renderPreviews() {
+          if (!previewContainer) return;
+          previewContainer.innerHTML = '';
+          if (dt.files.length === 0) {
+            previewContainer.classList.add('hidden');
+            return;
+          }
+          previewContainer.classList.remove('hidden');
+
+          Array.from(dt.files).forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              const div = document.createElement('div');
+              div.className = 'relative group w-16 h-16 rounded-lg overflow-hidden border border-gray-300 shadow-sm shrink-0 bg-white';
+              div.innerHTML = `
+                <img src="${e.target.result}" class="w-full h-full object-cover">
+                <button type="button" class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-[10px] flex items-center justify-center shadow hover:bg-red-700" title="Remove">
+                  &times;
+                </button>
+              `;
+              div.querySelector('button').addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                dt.items.remove(index);
+                updateInputAndPreviews();
+              });
+              previewContainer.appendChild(div);
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+
+        // Drop zone click triggers file browser
+        dropZone.addEventListener('click', () => input.click());
+
+        // Drag and drop handlers
+        ['dragenter', 'dragover'].forEach(name => {
+          dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.add('border-primary', 'bg-blue-50/50');
+          });
+        });
+
+        ['dragleave', 'drop'].forEach(name => {
+          dropZone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.remove('border-primary', 'bg-blue-50/50');
+          });
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          addFiles(e.dataTransfer.files);
+        });
+
+        input.addEventListener('change', () => {
+          addFiles(input.files);
+        });
+
+        // Global Paste Handler for Clipboard Ctrl+V
+        window.addEventListener('paste', (e) => {
+          const items = e.clipboardData ? e.clipboardData.items : [];
+          const pasted = [];
+          for (let item of items) {
+            if (item.type.indexOf('image') !== -1) {
+              const file = item.getAsFile();
+              if (file) pasted.push(file);
+            }
+          }
+          if (pasted.length > 0) {
+            addFiles(pasted);
+          }
+        });
+      }
+
+      // Initialize uploaders for all project cards
+      {% for project in projects %}
+        setupUploader('drop-zone-{{ project.id }}', 'input-{{ project.id }}', 'previews-{{ project.id }}');
+      {% endfor %}
+    </script>
+  {% endif %}
 
 </body>
 </html>

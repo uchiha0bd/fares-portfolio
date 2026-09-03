@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio & Certificate Details - Fares Hamid</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <script>
@@ -85,7 +89,7 @@
 
             <h2 class="text-2xl font-bold text-gray-900">{{ project.title }}</h2>
 
-            <!-- HORIZONTAL MULTI-PHOTO CAROUSEL WITH SINGLE PHOTO DELETE BUTTON -->
+            <!-- HORIZONTAL MULTI-PHOTO CAROUSEL WITH INDIVIDUAL PHOTO DELETE BUTTON -->
             {% if project.images %}
               <div class="space-y-2">
                 <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 p-2 bg-gray-50/80 rounded-xl border border-gray-200/80">
@@ -116,12 +120,12 @@
             {% if current_user.is_authenticated %}
               <div class="bg-blue-50/80 p-5 rounded-xl border border-blue-200 space-y-3">
                 <p class="text-xs font-bold text-gray-900 flex items-center gap-1">
-                  <i class="bi bi-plus-circle-fill text-primary"></i> Admin: Upload Photos to this Project
+                  <i class="bi bi-plus-circle-fill text-primary"></i> Admin: Add More Photos/Screenshots to this Project
                 </p>
 
                 <form action="/admin/project/{{ project.id }}/add-photos" method="POST" enctype="multipart/form-data" class="space-y-3">
-                  <!-- Drag, Drop & Paste Dropzone -->
-                  <div id="drop-zone-{{ project.id }}" class="drop-zone border-2 border-dashed border-blue-300 hover:border-primary rounded-xl p-4 text-center cursor-pointer bg-white transition space-y-1">
+                  <!-- Drag, Drop & Paste Dropzone with HTML5 data attribute -->
+                  <div data-project-id="{{ project.id }}" class="drop-zone border-2 border-dashed border-blue-300 hover:border-primary rounded-xl p-4 text-center cursor-pointer bg-white transition space-y-1">
                     <i class="bi bi-cloud-arrow-up text-2xl text-primary"></i>
                     <p class="text-xs font-semibold text-gray-700">
                       Drag & Drop photos here, click to browse, or press <kbd class="px-1.5 py-0.5 bg-gray-200 rounded text-[10px] font-mono border">Ctrl + V</kbd> to paste images
@@ -217,13 +221,13 @@
     <p>© Fares Hamid. All Rights Reserved.</p>
   </footer>
 
-  <!-- SMART DRAG, DROP & CLIPBOARD PASTE SCRIPT -->
+  <!-- CLEAN JAVASCRIPT WITHOUT JINJA2 LOOPS INSIDE <script> -->
   {% if current_user.is_authenticated %}
     <script>
-      function setupUploader(dropZoneId, inputId, previewContainerId) {
-        const dropZone = document.getElementById(dropZoneId);
-        const input = document.getElementById(inputId);
-        const previewContainer = document.getElementById(previewContainerId);
+      function setupUploader(dropZone) {
+        const projectId = dropZone.getAttribute('data-project-id');
+        const input = document.getElementById('input-' + projectId);
+        const previewContainer = document.getElementById('previews-' + projectId);
 
         if (!dropZone || !input) return;
 
@@ -274,10 +278,8 @@
           });
         }
 
-        // Drop zone click triggers file browser
         dropZone.addEventListener('click', () => input.click());
 
-        // Drag and drop handlers
         ['dragenter', 'dragover'].forEach(name => {
           dropZone.addEventListener(name, (e) => {
             e.preventDefault();
@@ -294,15 +296,9 @@
           });
         });
 
-        dropZone.addEventListener('drop', (e) => {
-          addFiles(e.dataTransfer.files);
-        });
+        dropZone.addEventListener('drop', (e) => addFiles(e.dataTransfer.files));
+        input.addEventListener('change', () => addFiles(input.files));
 
-        input.addEventListener('change', () => {
-          addFiles(input.files);
-        });
-
-        // Global Paste Handler for Clipboard Ctrl+V
         window.addEventListener('paste', (e) => {
           const items = e.clipboardData ? e.clipboardData.items : [];
           const pasted = [];
@@ -312,16 +308,14 @@
               if (file) pasted.push(file);
             }
           }
-          if (pasted.length > 0) {
-            addFiles(pasted);
-          }
+          if (pasted.length > 0) addFiles(pasted);
         });
       }
 
-      // Initialize uploaders for all project cards
-      {% for project in projects %}
-        setupUploader('drop-zone-{{ project.id }}', 'input-{{ project.id }}', 'previews-{{ project.id }}');
-      {% endfor %}
+      // Initialize all uploaders using standard DOM selection
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.drop-zone').forEach(dz => setupUploader(dz));
+      });
     </script>
   {% endif %}
 

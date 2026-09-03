@@ -546,7 +546,9 @@
 
   </main>
 
+  <!-- LIGHTWEIGHT VANILLA JAVASCRIPT -->
   <script>
+    // 1. Mobile Top Horizontal Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -566,6 +568,7 @@
       });
     });
 
+    // 2. Typewriter Effect
     const words = ["Designer", "Developer", "Freelancer", "Software Engineer"];
     let wordIndex = 0;
     let charIndex = 0;
@@ -601,6 +604,7 @@
       if (words.length) setTimeout(type, 500);
     });
 
+    // 3. Flask Async Contact Form Handler
     const contactForm = document.getElementById('contact-form');
     const statusBox = document.getElementById('form-status');
     const submitBtn = document.getElementById('submit-btn');
@@ -640,10 +644,10 @@
     });
   </script>
 
-  <!-- UPLOADER SCRIPT FOR INDEX PAGE (New Projects & Thoughts) -->
+  <!-- UPLOADER SCRIPT FOR INDEX PAGE -->
   {% if current_user.is_authenticated %}
     <script>
-      function setupUploader(dropZoneId, inputId, previewContainerId) {
+      function setupIndexUploader(dropZoneId, inputId, previewContainerId) {
         const dropZone = document.getElementById(dropZoneId);
         const input = document.getElementById(inputId);
         const previewContainer = document.getElementById(previewContainerId);
@@ -731,8 +735,10 @@
         });
       }
 
-      setupUploader('new-project-dropzone', 'new-project-input', 'new-project-previews');
-      setupUploader('thought-dropzone', 'thought-input', 'thought-previews');
+      document.addEventListener('DOMContentLoaded', () => {
+        setupIndexUploader('new-project-dropzone', 'new-project-input', 'new-project-previews');
+        setupIndexUploader('thought-dropzone', 'thought-input', 'thought-previews');
+      });
     </script>
   {% endif %}
 
